@@ -1,12 +1,8 @@
 # 一、二维分数阶Possion方程
 
 二维分数阶Possion方程形式如下：
-$$
-\begin{cases}
-(-\Delta)^{\alpha/2} u(x, y) = f(x, y), & \text{for } (x, y) \in \Omega := \left\{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 < 1 \right\}, \\
-u(x, y) = 0, & \text{for } (x, y) \in \mathbb{R}^2 \setminus \Omega
-\end{cases}
-$$
+
+![image-20250614220417954](./assets/image-20250614220417954.png)
 
 
 其中$(-\Delta)^{\alpha/2}$为$\alpha$阶的拉普拉斯算子，$u(x,y)$为待求解，$f(x,y)$为已知函数。
@@ -14,9 +10,9 @@ $$
 # 二、求解原理
 
 求解二维分数阶Possion方程的主要依据分数阶拉普拉斯算子的方向导数积分定义：
-$$
-(-\Delta)^{\alpha/2} u(x) = C(\alpha, d) \int_{\|\theta\|=1} D_\theta^\alpha u(x) \, d\theta
-$$
+
+![image-20250614220442155](./assets/image-20250614220442155.png)
+
 其中$C(\alpha, d)$ 是与阶数 $\alpha$ 和维度 $d$（你是二维，即 $d=2$）有关的归一化常数。$|\theta|=1$ 表示在单位圆（二维）或单位球（高维）上积分。$D_\theta^\alpha u(x)$ 是函数 $u(x)$ 沿方向 $\theta$ 的分数阶导数。
 
 为了求解等式右边的积分，我们使用其求和近似该积分。为了保证近似的精度，我们使用高斯-勒让德函数划分角度和权重：
@@ -28,9 +24,9 @@ $$
 其中N代表N个角度方向，$w_i$为$\theta_i$方向的权重。
 
 进一步为了能够实际的求出右式的分数阶导数，我们使用Grunwald-Letnikov 公式进行模拟：
-$$
-D_{\theta_i}^\alpha u(x) \approx \frac{1}{h^\alpha} \sum_{k=0}^M (-1)^k \binom{\alpha}{k} \, u\big(x - k h \theta_i \big),
-$$
+
+![image-20250614220510757](./assets/image-20250614220510757.png)
+
 其中$h > 0$ 代表背景参考点选取步长, $\quad M \in \mathbb{N}$ 代表背景参考点个数, $\quad \binom{\alpha}{k} = \frac{\Gamma(\alpha+1)}{\Gamma(k+1)\,\Gamma(\alpha - k +1)}$ 是每一个背景参考点的系数。
 
 # 三、实验细节
